@@ -1,4 +1,5 @@
 Snowflake [] me;
+boolean click = true;
 void setup()
 {
   size(400,400);
@@ -7,7 +8,6 @@ void setup()
   {
     me[i] = new Snowflake();
   }
-  
   background(0,191,255);
 }
 void draw()
@@ -15,13 +15,12 @@ void draw()
   mouseDragged();
   for (int i = 0; i < me.length; i++)
   {
+    me[i].lookDown();
     me[i].erase();
-    //me[i].lookDown();
     me[i].move();
     me[i].wrap();
     me[i].show();
   }
- // for (int i = 0;)
   
 }
 void mouseDragged()
@@ -31,7 +30,6 @@ void mouseDragged()
     fill(0);
     ellipse(mouseX,mouseY,15,15);
   }
-  
 }
 
 class Snowflake
@@ -52,20 +50,28 @@ class Snowflake
   }
   void lookDown()
   {
-    // if (y < 0 || y > 400 || get(x,y) == color(255,255,255))
-    // {
-    //   isMoving = false;
-    // }
-    // else 
-    // {
-    //   isMoving = true;
-    // }
+    if (get(x-8,y+8) == color(0,0,0)||get(x+8,y+8) == color(0,0,0))
+    {
+      isMoving = false;
+    }
+    else 
+    {
+      isMoving = true;
+    }
+    if (keyPressed)
+    {
+      if (key =='d'||key =='D')
+      {
+        background(0,191,255);
+
+      }
+    }
   }
   void erase()
   {
     fill(0,191,255);
     noStroke();
-    ellipse(x, y,11,11);
+    ellipse(x, y,12,12);
   }
   void move()
   {
