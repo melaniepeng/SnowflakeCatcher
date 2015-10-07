@@ -3,7 +3,7 @@ boolean click = true;
 void setup()
 {
   size(400,400);
-  me = new Snowflake[100];
+  me = new Snowflake[150];
   for (int i = 0; i < me.length; i++)
   {
     me[i] = new Snowflake();
